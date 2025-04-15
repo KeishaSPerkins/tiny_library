@@ -72,6 +72,7 @@ function listens(type, selector, callback, options = {}, parent = null) {
         options
     )
 }
-initializeScreenSaver();
-
-listens('change', ".toggle_item input[type='checkbox']", (d) => { setSetting(d.target.value, d.target.checked ? true : false) })                                          
+(function(){
+    initializeScreenSaver();
+    listens('change', ".toggle_item input[type='checkbox']", (d) => { setSetting(d.target.value, d.target.checked ? true : false) })
+})();
