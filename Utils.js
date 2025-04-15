@@ -103,7 +103,7 @@ function insertRawElement(elementString, relativeElementString, positionString =
 
   qs(relativeElementString).insertAdjacentHTML(position, elementString);
 }
-function listen(type, selector, callback, options = {}, parent = null) {
+function listen(type, selector, callback, options = {}) {
     window.addEventListener(
         type,
         e => {
