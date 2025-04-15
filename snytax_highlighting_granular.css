@@ -1,0 +1,245 @@
+:root {
+    --dark: hsl(265, 70%, 5%);
+    --light: hsl(265, 10%, 75%, 1);
+    --hljs-keyword: gold;
+    --hljs-operator: white;
+    --hljs-function: hsl(from var(--dark) calc(h - 80) calc(s + 30) calc(l + 40));
+    --hljs-pattern-match: orange;
+    --hljs-pattern-match-constructor: orange;
+    --hljs-function-params: hsl(from darkorange calc(h - 10) calc(s + 40) l);
+    font-weight: bold;
+    --hljs-function-params-typing: darkorange;
+    --hljs-module-access-module: hsl(260, 45%, 55%, 1);
+    --hljs-constructor: dodgerblue;
+    --hljs-constructor-string: hsl(from dodgerblue h s calc(l + 10));
+    --hljs-comment: hsla(from cyan h s l / .4);
+    --hljs-quote: var(--comment);
+    --hljs-doctag: hsl(10, 1%, 90%, 1);
+    --hljs-formula: hsl(250, 90%, 67%);
+    --hljs-section: coral;
+    --hljs-name: hsl(10, 1%, 90%, 1);
+    --hljs-deletion: hsl(10, 1%, 90%, 1);
+    --hljs-subst: hsl(10, 1%, 90%, 1);
+    --hljs-literal: hsl(10, 1%, 90%, 1);
+    --hljs-string: hsl(10, 1%, 90%, 1);
+    --hljs-regexp: hsl(10, 1%, 90%, 1);
+    --hljs-addition: hsl(10, 1%, 90%, 1);
+    --hljs-attribute: hsl(10, 1%, 90%, 1);
+    --hljs-meta-string: hsl(10, 1%, 90%, 1);
+    --hljs-built_in: hsl(10, 1%, 90%, 1);
+    --hljs-title-class_: hsl(10, 1%, 90%, 1);
+    --hljs-class-title: hsl(10, 1%, 90%, 1);
+    --hljs-attr: hsl(10, 1%, 90%, 1);
+    --hljs-variable: hsl(10, 1%, 90%, 1);
+    --hljs-template-variable: hsl(10, 1%, 90%, 1);
+    --hljs-type: hsl(10, 1%, 90%, 1);
+    --hljs-selector-class: hsl(from mediumvioletred calc(h + 0) calc(s + 20) calc(l + 10));
+    --hljs-selector-id: hsl(from orangered calc(h + 0) calc(s + 20) calc(l + 10));
+    --hljs-selector-attr: hsl(from olivedrab calc(h + 0) calc(s + 20) calc(l + 10));
+    --hljs-selector-tag: hsl(from steelblue calc(h + 0) calc(s + 30) calc(l + 10));
+    --hljs-selector-pseudo: hsl(10, 1%, 90%, 1);
+    --hljs-number: hsl(10, 1%, 90%, 1);
+    --hljs-symbol: hsl(10, 1%, 90%, 1);
+    --hljs-bullet: hsl(10, 1%, 90%, 1);
+    --hljs-link: hsl(10, 1%, 90%, 1);
+    --hljs-meta: hsl(10, 1%, 90%, 1);
+    --hljs-title: hsl(10, 1%, 90%, 1);
+}
+
+body {
+    pre code.hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 1em
+    }
+
+    code.hljs {
+        padding: 3px 5px
+    }
+
+    .hljs {
+        color: var(--light) !important;
+        background: var(--dark) !important;
+    }
+
+    .hljs-emphasis {
+        font-style: italic
+    }
+
+    .hljs-strong {
+        font-weight: bold
+    }
+
+    .hljs-link {
+        text-decoration: underline
+    }
+
+    .hljs-keyword {
+        color: var(--hljs-keyword) !important;
+    }
+
+    .hljs-operator {
+        color: var(--hljs-operator) !important;
+    }
+
+    .hljs-pattern-match {
+        color: var(--hljs-pattern-match) !important;
+    }
+
+    .hljs-pattern-match .hljs-constructor {
+        color: var(--hljs-pattern-match-constructor) !important;
+    }
+
+    .hljs-function {
+        color: var(--hljs-function) !important;
+    }
+
+    .hljs-function .hljs-params {
+        color: var(--hljs-function-params) !important;
+    }
+
+    .hljs-function .hljs-params .hljs-typing {
+        color: var(--hljs-function-params-typing) !important;
+    }
+
+    .hljs-module-access .hljs-module {
+        color: var(--hljs-module-access-module) !important;
+    }
+
+    .hljs-constructor {
+        color: var(--hljs-constructor) !important;
+    }
+
+    .hljs-constructor .hljs-string {
+        color: var(--hljs-constructor-string) !important;
+    }
+
+    .hljs-comment {
+        color: var(--hljs-comment) !important;
+    }
+
+    .hljs-quote {
+        color: var(--hljs-quote) !important;
+        font-style: italic;
+    }
+
+    .hljs-doctag {
+        color: var(--hljs-doctag) !important;
+    }
+
+    .hljs-formula {
+        color: var(--hljs-formula) !important;
+    }
+
+    .hljs-section {
+        color: var(--hljs-section) !important;
+    }
+
+    .hljs-name {
+        color: var(--hljs-name) !important;
+    }
+
+    .hljs-selector-tag {
+        color: var(--hljs-selector-tag) !important;
+    }
+
+    .hljs-deletion {
+        color: var(--hljs-deletion) !important;
+    }
+
+    .hljs-subst {
+        color: var(--hljs-subst) !important;
+    }
+
+    .hljs-literal {
+        color: var(--hljs-literal) !important;
+    }
+
+    .hljs-string {
+        color: var(--hljs-string) !important;
+    }
+
+    .hljs-regexp {
+        color: var(--hljs-regexp) !important;
+    }
+
+    .hljs-addition {
+        color: var(--hljs-addition) !important;
+    }
+
+    .hljs-attribute {
+        color: var(--hljs-attribute) !important;
+    }
+
+    .hljs-meta .hljs-string {
+        color: var(--hljs-meta-string) !important;
+    }
+
+    .hljs-built_in {
+        color: var(--hljs-built_in) !important;
+    }
+
+    .hljs-title.class_ {
+        color: var(--hljs-title-class_) !important;
+    }
+
+    .hljs-class .hljs-title {
+        color: var(--hljs-class-title) !important;
+    }
+
+    .hljs-attr {
+        color: var(--hljs-attr) !important;
+    }
+
+    .hljs-variable {
+        color: var(--hljs-variable) !important;
+    }
+
+    .hljs-template-variable {
+        color: var(--hljs-template-variable) !important;
+    }
+
+    .hljs-type {
+        color: var(--hljs-type) !important;
+    }
+
+    .hljs-selector-class {
+        color: var(--hljs-selector-class) !important;
+    }
+
+    .hljs-selector-attr {
+        color: var(--hljs-selector-attr) !important;
+    }
+
+    .hljs-selector-pseudo {
+        color: var(--hljs-selector-pseudo) !important;
+    }
+
+    .hljs-number {
+        color: var(--hljs-number) !important;
+    }
+
+    .hljs-symbol {
+        color: var(--hljs-symbol) !important;
+    }
+
+    .hljs-bullet {
+        color: var(--hljs-bullet) !important;
+    }
+
+    .hljs-link {
+        color: var(--hljs-link) !important;
+    }
+
+    .hljs-meta {
+        color: var(--hljs-meta) !important;
+    }
+
+    .hljs-selector-id {
+        color: var(--hljs-selector-id) !important;
+    }
+
+    .hljs-title {
+        color: var(--hljs-title) !important;
+    }
+}
