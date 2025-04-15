@@ -65,9 +65,10 @@ function createElement(type, options = {}, parent = null) {
                 break;
             case "text":
                 element.textContent = value
-                return
+                break;
             case "innerHTML":
                 element.innerHTML = value
+                break;
             default:
                 element.setAttribute(key, value)
                 break;

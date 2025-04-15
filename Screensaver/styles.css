@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+    --size: 8vw;
+}
+
+.screensaver.wrapper {
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    background: radial-gradient(#234, #123);
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    transition-property: opacity, bottom;
+    transition-duration: 1s;
+    transition-behavior: allow-discrete;
+    font-family: 'Red Hat Mono', monospace !important;
+    position: fixed;
+    left: 0;
+    bottom: 100%;
+    right: 0;
+    top: 0;
+    bottom: 1000%;
+    opacity: 0;
+    z-index: 1000000;
+}
+
+.screensaver.wrapper.show {
+    bottom: 0;
+    opacity: .98;
+}
+
+.bouncer {
+    display: block;
+    width: 8vw;
+    height: 8vw;
+    text-align: center;
+}
+
+.bouncer.X {
+    /*   border:dashed 2px #aaa2; */
+    background: none;
+}
+
+.bouncer.Y {
+    background: white;
+    border-radius: 50%;
+    opacity: .8;
+}
+
+.X {
+    animation: moveX 4.3s linear infinite alternate;
+}
+
+.Y {
+    animation: moveY 2.1s linear infinite alternate;
+}
+
+@keyframes moveX {
+    100% {
+        transform: translate(calc(100vw - 8vw));
+    }
+}
+
+@keyframes moveY {
+    100% {
+        transform: translateY(calc(100vh - 8vw));
+    }
+}
+
+.clock {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    right: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.clock__time {
+    font-size: 10vmin;
+    white-space: nowrap;
+    text-align: right;
+    line-height: 1;
+    color: #fff;
+}
+
+`
