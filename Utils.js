@@ -112,13 +112,15 @@ function listen(type, selector, callback, options = {}) {
         options
     )
 }
-function clearParent(parentQuery) {
-    qsa(parentQuery)?.map((p) => {
-        while (p.firstChild != null) {
-            p.lastChild.remove()
-        }
-    })
+function clearParent(target) {
+  const parents = typeof target === "string" ? qsa(target) : [target];
+  parents.forEach((p) => {
+    while (p.firstChild != null) {
+      p.removeChild(p.firstChild);
+    }
+  });
 }
+
 
 //Debugging Helpers
 function log(message) {
