@@ -153,29 +153,40 @@ function formatCompactNumber(number, location) {
     })
     return COMPACT_NUMBER_FORMATTER.format(number)
 }
-function formatRelativeDate(toDate, fromDate, location) {
-    const DIVISIONS = [
-        { amount: 60, name: "seconds" },
-        { amount: 60, name: "minutes" },
-        { amount: 24, name: "hours" },
-        { amount: 7, name: "days" },
-        { amount: 4.34524, name: "weeks" },
-        { amount: 12, name: "months" },
-        { amount: Number.POSITIVE_INFINITY, name: "years" },
-    ]
-    const RELATIVE_DATE_FORMATTER = new Intl.RelativeTimeFormat((location || undefined), {
-        numeric: "auto",
-    })
-    let duration = (toDate - (fromDate || new Date())) / 1000
+function formatRelativeDate(toDate, fromDate = new Date(), location) {
+  const DIVISIONS = [
+    { amount: 60, name: "seconds" },
+    { amount: 60, name: "minutes" },
+    { amount: 24, name: "hours" },
+    { amount: 7, name: "days" },
+    { amount: 4.34524, name: "weeks" },
+    { amount: 12, name: "months" },
+    { amount: Number.POSITIVE_INFINITY, name: "years" },
+  ];
 
-    for (let i = 0; i <= DIVISIONS.length; i++) {
-        const division = DIVISIONS[i]
-        if (Math.abs(duration) < division.amount) {
-            return RELATIVE_DATE_FORMATTER.format(Math.round(duration), division.name)
-        }
-        duration /= division.amount
+  const RELATIVE_DATE_FORMATTER = new Intl.RelativeTimeFormat(location || undefined, {
+    numeric: "auto",
+  });
+
+  // Parse input
+  const to = typeof toDate === "string" ? Number(toDate) : toDate;
+  const from = typeof fromDate === "string" ? Number(fromDate) : fromDate;
+
+  // Validate
+  if (isNaN(to) || isNaN(from)) return "Invalid date";
+
+  let duration = (to - from) / 1000;
+
+  for (const division of DIVISIONS) {
+    if (Math.abs(duration) < division.amount) {
+      return RELATIVE_DATE_FORMATTER.format(Math.round(duration), division.name);
     }
+    duration /= division.amount;
+  }
+
+  return "some time ago";
 }
+
 
 // Text Formatters
 function toProperCase(string) {
@@ -250,7 +261,44 @@ function throttle(cb, delay) {
 function sanitizeInput(inputValue) {
     return createElement("div", { text: inputValue }).innerHTML;
 }
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, m =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]
+  );
+}
 
+
+function isValidExpression(expr) {
+const callRegex = /^\s*(?:[a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*(?:\(([^()]|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|[^()])*?\))?|\(\s*\)\s*=>\s*[\s\S]+|\(\s*[a-zA-Z_$][\w$]*(?:\s*,\s*[a-zA-Z_$][\w$]*)*\s*\)\s*=>\s*[\s\S]+)\s*$/;
+  if (callRegex.test(expr)) {
+    return true;
+  }
+  if (expr.includes('(') && expr.includes(')')) {
+    console.error("Parsing error: Complex function call may not be fully supported:", expr);
+  }
+  return false;
+}
+
+function safeGet(valueOrFn, fb = "") {
+  const fallback = fb || ""
+  try {
+    if (typeof valueOrFn === "function") {
+      const result = valueOrFn();
+      if (typeof result === "string" && !isValidExpression(result)) {
+        return fallback;
+      }
+      return result != null ? result : fallback;
+    } else {
+      if (typeof valueOrFn === "string" && !isValidExpression(valueOrFn)) {
+        return fallback;
+      }
+      return valueOrFn != null ? valueOrFn : fallback;
+    }
+  } catch (error) {
+    console.error("safeGet error:", error);
+    return fallback;
+  }
+}
 //Array Utitlities
 function first(array, n = 1) {
     if (n === 1) return array[0]
