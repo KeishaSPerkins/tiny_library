@@ -153,7 +153,7 @@ function formatCompactNumber(number, location) {
     })
     return COMPACT_NUMBER_FORMATTER.format(number)
 }
-function formatRelativeDate(toDate, fromDate = new Date(), location) {
+function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, location) {
   const DIVISIONS = [
     { amount: 60, name: "seconds" },
     { amount: 60, name: "minutes" },
@@ -163,7 +163,15 @@ function formatRelativeDate(toDate, fromDate = new Date(), location) {
     { amount: 12, name: "months" },
     { amount: Number.POSITIVE_INFINITY, name: "years" },
   ];
-
+const ABBREVIATED_DIVISIONS = [
+    { amount: 60, name: "s" },
+    { amount: 60, name: "m" },
+    { amount: 24, name: "h" },
+    { amount: 7, name: "d" },
+    { amount: 4.34524, name: "w" },
+    { amount: 12, name: "m" },
+    { amount: Number.POSITIVE_INFINITY, name: "y" }
+]
   const RELATIVE_DATE_FORMATTER = new Intl.RelativeTimeFormat(location || undefined, {
     numeric: "auto",
   });
@@ -176,8 +184,8 @@ function formatRelativeDate(toDate, fromDate = new Date(), location) {
   if (isNaN(to) || isNaN(from)) return "Invalid date";
 
   let duration = (to - from) / 1000;
-
-  for (const division of DIVISIONS) {
+  let divs = abbreviate ? ABBREVIATED_DIVISIONS : DIVISIONS
+  for (const division of divs) {
     if (Math.abs(duration) < division.amount) {
       return RELATIVE_DATE_FORMATTER.format(Math.round(duration), division.name);
     }
