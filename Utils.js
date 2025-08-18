@@ -1,4 +1,9 @@
-//PolyFills
+
+//HEADING: Polyfills
+//DOC: Switch Expression
+//DESCRIPTION: Mimics a C# type switch expression using JavaScript
+//PARAM: { name: "value", datatype: "string", description: "The first name of the user", required: true }
+//PARAM: { name: "cases", datatype: "object array", required: true }
 function switchExpression(value, cases) {
     for (const [key, result] of Object.entries(cases)) {
         if (key === '_') {
