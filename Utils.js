@@ -31,10 +31,20 @@ function switchExpression(value, cases) {
 
 }
 
-//DOM Traversal
+
+//HEADING: DOM Traversal
+//DOC: Query Selector
+//DESCRIPTION: Returns one item--either the first or only--that matches a CSS query. Saves you from typing `document.querySelector()` several times in your functions.
+//PARAM: { name: "selector", datatype: "string", description: "The query to be searched", required: true }
+//PARAM: { name: "parent", datatype: "HTML Element", description: "The parent element to search within", required: false }
 function qs(selector, parent) {
     return (parent || document).querySelector(selector);
 }
+
+//DOC: Query Selector All
+//DESCRIPTION: Returns an array of HTML elements that match a CSS query. Saves you from typing `document.querySelectorAll()` several times in your functions.
+//PARAM: { name: "selector", datatype: "string", description: "The query to be searched", required: true }
+//PARAM: { name: "parent", datatype: "HTML Element", description: "The parent element to search within", required: false }
 function qsa(selector, parent) {
     return [...(parent || document).querySelectorAll(selector)];
 }
@@ -82,6 +92,11 @@ function createElement(type, options = {}, parent = null) {
     if (!parent) { return element; }
     if (typeof parent == "string") { qs(parent).append(element); return; }
     if (typeof parent == "object") { parent.append(element); return; }
+}
+function appendChildren(parent, children = []){
+    children.forEach(child => {
+        (parent || document).appendChild(child)
+    }
 }
 function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
   const validPositions = [
