@@ -1,5 +1,5 @@
 //PolyFills
-function switchExpression(value, cases) {
+export function switchExpression(value, cases) {
     for (const [key, result] of Object.entries(cases)) {
         if (key === '_') {
             // Default case
@@ -27,30 +27,30 @@ function switchExpression(value, cases) {
 }
 
 //DOM Traversal
-function qs(selector, parent) {
+export function qs(selector, parent) {
     return (parent || document).querySelector(selector);
 }
-function qsa(selector, parent) {
+export function qsa(selector, parent) {
     return [...(parent || document).querySelectorAll(selector)];
 }
-function findAncestor(descendantQuery, ancestorQuery) {
+export function findAncestor(descendantQuery, ancestorQuery) {
     return qs(descendantQuery).closest(ancestorQuery);
 }
 
 //Helper Helpers
-function validateArgumentValue(validArray, itemToCheck, argumentName) {
+export function validateArgumentValue(validArray, itemToCheck, argumentName) {
     if (!validArray.includes(itemToCheck))
         throw new Error(`The supplied ${argumentName} argument is invalid.`)
     return true;
 }
-function validateArgumentType(validType, itemToCheck, argumentName) {
+export function validateArgumentType(validType, itemToCheck, argumentName) {
     if (!validType != typeof itemToCheck)
         throw new Error(`The supplied ${argumentName} argument is must be a ${validType}.`)
     return true;
 }
 
 //DOM Manipulation
-function createElement(type, options = {}, parent = null) {
+export function createElement(type, options = {}, parent = null) {
     const element = document.createElement(type);
     Object.entries(options).forEach(([key, value]) => {
         switch (key) {
@@ -78,7 +78,7 @@ function createElement(type, options = {}, parent = null) {
     if (typeof parent == "string") { qs(parent).append(element); return; }
     if (typeof parent == "object") { parent.append(element); return; }
 }
-function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
+export function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
   const validPositions = [
     "after", "afterend", 
     "before", "beforebegin",
@@ -103,7 +103,7 @@ function insertRawElement(elementString, relativeElementString, positionString =
 
   qs(relativeElementString).insertAdjacentHTML(position, elementString);
 }
-function listen(type, selector, callback, options = {}) {
+export function listen(type, selector, callback, options = {}) {
     window.addEventListener(
         type,
         e => {
@@ -112,7 +112,7 @@ function listen(type, selector, callback, options = {}) {
         options
     )
 }
-function clearParent(target) {
+export function clearParent(target) {
   const parents = typeof target === "string" ? qsa(target) : [target];
   parents.forEach((p) => {
     while (p.firstChild != null) {
@@ -123,37 +123,37 @@ function clearParent(target) {
 
 
 //Debugging Helpers
-function log(message) {
+export function log(message) {
     console.log(message)
 }
 
-//Pure Functions for Small Computations
-function getSum(...args) {
+//Pure export Functions for Small Computations
+export function getSum(...args) {
     return args.reduce((a, b) => { return a + b }, 0);
 }
-function getPercentage(part, ...whole) {
+export function getPercentage(part, ...whole) {
     return (part / whole.reduce((a, b) => a + b, 0)) * 100;
 }
 
 // Number Formatters
-function formatCurrency(number, location) {
+export function formatCurrency(number, location) {
     const CURRENCY_FORMATTER = new Intl.NumberFormat((location || undefined), {
         currency: "USD",
         style: "currency",
     })
     return CURRENCY_FORMATTER.format(number)
 }
-function formatNumber(number, location) {
+export function formatNumber(number, location) {
     const NUMBER_FORMATTER = new Intl.NumberFormat(location || undefined)
     return NUMBER_FORMATTER.format(number)
 }
-function formatCompactNumber(number, location) {
+export function formatCompactNumber(number, location) {
     const COMPACT_NUMBER_FORMATTER = new Intl.NumberFormat((location || undefined), {
         notation: "compact",
     })
     return COMPACT_NUMBER_FORMATTER.format(number)
 }
-function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, location) {
+export function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, location) {
   const DIVISIONS = [
     { amount: 60, name: "seconds" },
     { amount: 60, name: "minutes" },
@@ -197,10 +197,10 @@ const ABBREVIATED_DIVISIONS = [
 
 
 // Text Formatters
-function toProperCase(string) {
+export function toProperCase(string) {
     return string?.split(" ").map((s) => { return `${s[0].toUpperCase()}${s.slice(1).toLowerCase()}` }).join(" ")
 }
-function toTitleCase(string) {
+export function toTitleCase(string) {
     return string?.split(" ").map((str, index) => {
         return (
             index > 0 && (["a", "an", "the", "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "at", "by", "in", "of", "off", "on", "per", "to", "up", "via"].includes(str.toLowerCase()) || str.length < 3)) ? str.toLowerCase() :
@@ -208,7 +208,7 @@ function toTitleCase(string) {
                 toProperCase(str)
     }).join(" ");
 }
-function formatList(array,  commas, andOr, location){
+export function formatList(array,  commas, andOr, location){
   const typeLookup = {
     "and": "conjunction",
     "conjunction": "conjunction",
@@ -231,7 +231,7 @@ function formatList(array,  commas, andOr, location){
 }
 
 //Performance
-function debounce(cb, delay) {
+export function debounce(cb, delay) {
     let timeout
 
     return (...args) => {
@@ -241,7 +241,7 @@ function debounce(cb, delay) {
         }, (delay || 1000))
     }
 }
-function throttle(cb, delay) {
+export function throttle(cb, delay) {
     let shouldWait = false
     let waitingArgs
     const timeoutFunc = () => {
@@ -266,31 +266,31 @@ function throttle(cb, delay) {
         setTimeout(timeoutFunc, delay)
     }
 }
-function sanitizeInput(inputValue) {
+export function sanitizeInput(inputValue) {
     return createElement("div", { text: inputValue }).innerHTML;
 }
-function escapeHTML(str) {
+export function escapeHTML(str) {
   return str.replace(/[&<>"']/g, m =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]
   );
 }
 
 
-function isValidExpression(expr) {
+export function isValidExpression(expr) {
 const callRegex = /^\s*(?:[a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*(?:\(([^()]|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|[^()])*?\))?|\(\s*\)\s*=>\s*[\s\S]+|\(\s*[a-zA-Z_$][\w$]*(?:\s*,\s*[a-zA-Z_$][\w$]*)*\s*\)\s*=>\s*[\s\S]+)\s*$/;
   if (callRegex.test(expr)) {
     return true;
   }
   if (expr.includes('(') && expr.includes(')')) {
-    console.error("Parsing error: Complex function call may not be fully supported:", expr);
+    console.error("Parsing error: Complex export function call may not be fully supported:", expr);
   }
   return false;
 }
 
-function safeGet(valueOrFn, fb = "") {
+export function safeGet(valueOrFn, fb = "") {
   const fallback = fb || ""
   try {
-    if (typeof valueOrFn === "function") {
+    if (typeof valueOrFn === "export function") {
       const result = valueOrFn();
       if (typeof result === "string" && !isValidExpression(result)) {
         return fallback;
@@ -308,40 +308,40 @@ function safeGet(valueOrFn, fb = "") {
   }
 }
 //Array Utitlities
-function first(array, n = 1) {
+export function first(array, n = 1) {
     if (n === 1) return array[0]
     return array.filter((_, index) => index < n)
 } // Get the first N elements in the array
-function last(array, n = 1) {
+export function last(array, n = 1) {
     if (n === 1) return array[array.length - 1]
     return array.filter((_, index) => array.length - index <= n)
 } // Get the last N elements in the array
-function sample(array) {
+export function sample(array) {
     return array[randomNumberBetween(0, array.length - 1)]
 }
-function pluck(array, key) {
+export function pluck(array, key) {
     return array.map(element => element[key])
 }
-function groupBy(array, key) {
+export function groupBy(array, key) {
     return array.reduce((group, element) => {
         const keyValue = element[key]
         return { ...group, [keyValue]: [...(group[keyValue] ?? []), element] }
     }, {})
 }
-function removeDuplicates(array) {
+export function removeDuplicates(array) {
     return Array.from(new Set(array));
 }
 
 //Other Utilities
-function randomNumberBetween(min, max) {
+export function randomNumberBetween(min, max) {
     return Math.floor(Math.random() * ((max || 100) - (min || 0) + 1) + (min || 0))
 }
-function sleep(duration) {
+export function sleep(duration) {
     return new Promise(resolve => {
         setTimeout(resolve, duration)
     })
 }
-function memoize(cb) {
+export function memoize(cb) {
     const cache = new Map()
     return (...args) => {
         const key = JSON.stringify(args)
@@ -353,12 +353,12 @@ function memoize(cb) {
     }
 }
 
-function getLogicalValue(callback) {
+export function getLogicalValue(callback) {
     return ((...args) => {
         return callback();
     })();
 }
-function isIOS() {
+export function isIOS() {
     return (
         (/iPad|iPhone|iPod/.test(navigator.platform) ||
             (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) && !window.MSStream //MSStream is to avoid IE11
