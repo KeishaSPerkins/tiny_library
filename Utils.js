@@ -96,7 +96,7 @@ function createElement(type, options = {}, parent = null) {
 function appendChildren(parent, children = []){
     children.forEach(child => {
         (parent || document).appendChild(child)
-    }
+    })
 }
 function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
   const validPositions = [
