@@ -48,12 +48,23 @@ function qs(selector, parent) {
 function qsa(selector, parent) {
     return [...(parent || document).querySelectorAll(selector)];
 }
+
+//DOC: Find Ancestor
+//DESCRIPTION: Returns the nearest ancestor that matches a given query
+//PARAM: {name: "descendantQuery", datatype: "string", description: "The query for the item to be searched", required: true}
+//PARAM: {name: "descendantQuery", datatype: "string", description: "The query for the item to be searched", required: true}
 function findAncestor(descendantQuery, ancestorQuery) {
     return qs(descendantQuery).closest(ancestorQuery);
 }
 
-//Helper Helpers
-function validateArgumentValue(validArray, itemToCheck, argumentName) {
+//HEADING: Helper Helpers
+
+//DOC: Validate Argument Value
+//DESCRIPTION: Returns whether a given argument is a valid argument for the given function
+//PARAM: {name: "validArray", datatype: "array", description: "An array of values on any type that lists the arguments the function will accept.", required: true}
+//PARAM: {name: "itemToCheck", datatype: "any", description: "The value that is being validated", required: true}
+//PARAM: {name: "argumentName", datatype: "string", descrption: "A name for the argument that can be used for error logging.", required: false}
+function validateArgumentValue(validArray, itemToCheck, argumentName = "") {
     if (!validArray.includes(itemToCheck))
         throw new Error(`The supplied ${argumentName} argument is invalid.`)
     return true;
@@ -64,7 +75,13 @@ function validateArgumentType(validType, itemToCheck, argumentName) {
     return true;
 }
 
-//DOM Manipulation
+//HEADING: DOM Manipulation
+
+//DOC: Create Element
+//DESCRIPTION: Creates an element with the attributes specified and appends the element to a parent or returns a reference to the created element.
+//PARAM: {name: "type", datatype: "string", description: "The name of the HTML element being created. (e.g. "div", "span", "ul"), required: true}
+//PARAM: {name: "options", datatype: "object", descption: "An object containing characteristics like <code>className</code>, attributes, and text content, required: false}
+//PARAM: {name: "parent", datatype: "string, reference", description: "A reference to a parent element or a query string to find the parent", required: false}
 function createElement(type, options = {}, parent = null) {
     const element = document.createElement(type);
     Object.entries(options).forEach(([key, value]) => {
