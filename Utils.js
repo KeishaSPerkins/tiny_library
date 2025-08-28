@@ -269,12 +269,12 @@ function formatList(array, commas, andOr, location) {
         "unit": "unit"
     }
     const styleLookup = {
+        false: "narrow",
+        true: "long",
         "long": "long",
         "short": "short",
         "narrow": "narrow",
         "none": "narrow",
-        false: "narrow",
-        true: "long",
         "ampersand": "short",
         "word": "long"
     }
