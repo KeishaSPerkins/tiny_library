@@ -248,11 +248,13 @@ function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, l
 
 // Text Formatters
 function toProperCase(string) {
-    return string?.split(" ").map((s) => { return `${s[0].toUpperCase()}${s.slice(1).toLowerCase()}` }).join(" ")
+    if(!string) {return ""}
+    return string.split(" ").map((s) => { return s[0].toUpperCase() + s.slice(1).toLowerCase() }).join(" ")
 }
 
 function toTitleCase(string) {
-    return string?.split(" ").map((str, index) => {
+    if(!string) {return ""}
+    return string.split(" ").map((str, index) => {
         return (
             index > 0 && (["a", "an", "the", "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "at", "by", "in", "of", "off", "on", "per", "to", "up", "via"].includes(str.toLowerCase()) || str.length < 3)) ? str.toLowerCase() :
             (str.split("-").length > 1) ? str.split("-").map((s) => { return toProperCase(s) }).join("-") :
