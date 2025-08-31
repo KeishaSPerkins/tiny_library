@@ -127,14 +127,10 @@ function insertRawElement(elementString, relativeElementString, positionString =
         "first-child", "last-child"
     ]
     const positionLookup = {
-        "beforebegin": "beforebegin",
-        "before": "beforebegin",
-        "afterend": "afterend",
-        "after": "afterend",
-        "firstchild": "afterbegin",
-        "afterbegin": "afterbegin",
-        "lastchild": "beforeend",
-        "beforeend": "beforeend",
+        "beforebegin": "beforebegin", "before": "beforebegin",
+        "afterend": "afterend","after": "afterend",
+        "firstchild": "afterbegin","afterbegin": "afterbegin",
+        "lastchild": "beforeend","beforeend": "beforeend",
     }
     positionString = positionString.toLowerCase()
     validateArgumentValue(validPositions, positionString)
