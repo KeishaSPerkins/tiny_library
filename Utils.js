@@ -187,6 +187,8 @@ function listen(type = "click", selector, callback, options = {}) {
 //functionEnd
 
 //DOC: Clear Parent
+//DESCRIPTION: Removes all child nodes from a given parent node
+//PARAM: {name: "target", datatype: "string", description: "The target element to be cleared", required: true}
 //functionStart
 function clearParent(target) {
   const parents = typeof target === "string" ? qsa(target) : [target];
@@ -201,20 +203,30 @@ function clearParent(target) {
 
 
 //Debugging Helpers
+//DOC: Log
+//DESCRIPTION: A shorter way to call <code>console.log()</code>
+//PARAM: {name: "message", datatype: "any", description: "The message to be logged", required: false}
 //functionStart
-function log(message) {
+function log(message = "log") {
   console.log(message)
 }
 //functionEnd
 
 
-//Pure Functions for Small Computations
+//HEADING: Pure Functions
+
+//DOC: Get Sum
+//DESCRIPTION: Returns the sum of a set of numbers
 //functionStart
 function getSum(...args) {
   return args.reduce((a, b) => { return a + b }, 0);
 }
 //functionEnd
 
+//DOC: Get Percentage
+//DESCRIPTION: Returns the percentage of a number or set of numbers
+//PARAM: {name: "part", datatype: "variable, number", description: "The X in <i>'X is what percentage of Y?'</i>}
+//PARAM: {name: "whole", datatype: "array of numbers, number", description: "The Y in <i>'X is what percentage of Y?'</i>}
 //functionStart
 function getPercentage(part, ...whole) {
   return (part / whole.reduce((a, b) => a + b, 0)) * 100;
