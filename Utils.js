@@ -186,6 +186,7 @@ function listen(type = "click", selector, callback, options = {}) {
 }
 //functionEnd
 
+//DOC: Clear Parent
 //functionStart
 function clearParent(target) {
   const parents = typeof target === "string" ? qsa(target) : [target];
