@@ -35,7 +35,7 @@ function switchExpression(value, cases) {
 
 //HEADING: DOM Traversal
 //DOC: Query Selector
-//DESCRIPTION: Returns one item--either the first or only--that matches a CSS query. Saves you from typing `document.querySelector()` several times in your functions.
+//DESCRIPTION: Returns one item--either the first or only--that matches a CSS query. Saves you from typing <code>document.querySelector()</code> several times in your functions.
 //PARAM: { name: "selector", datatype: "string", description: "The query to be searched", required: true }
 //PARAM: { name: "parent", datatype: "HTML Element", description: "The parent element to search within", required: false }
 //functionStart
@@ -45,7 +45,7 @@ function qs(selector, parent) {
 //functionEnd
 
 //DOC: Query Selector All
-//DESCRIPTION: Returns an array of HTML elements that match a CSS query. Saves you from typing `document.querySelectorAll()` several times in your functions.
+//DESCRIPTION: Returns an array of HTML elements that match a CSS query. Saves you from typing <code>document.querySelectorAll()</code> several times in your functions.
 //PARAM: { name: "selector", datatype: "string", description: "The query to be searched", required: true }
 //PARAM: { name: "parent", datatype: "HTML Element", description: "The parent element to search within", required: false }
 //functionStart
