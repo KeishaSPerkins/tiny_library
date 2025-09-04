@@ -1,0 +1,135 @@
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+
+  --bs-blue-100: hsl(from var(--bs-blue) h s calc(l + 40));
+  --bs-blue-200: hsl(from var(--bs-blue) h s calc(l + 30));
+  --bs-blue-300: hsl(from var(--bs-blue) h s calc(l + 20));
+  --bs-blue-400: hsl(from var(--bs-blue) h s calc(l + 10));
+  --bs-blue-500: var(--bs-blue);
+  --bs-blue-600: hsl(from var(--bs-blue) h s calc(l - 10));
+  --bs-blue-700: hsl(from var(--bs-blue) h s calc(l - 20));
+  --bs-blue-800: hsl(from var(--bs-blue) h s calc(l - 30));
+  --bs-blue-900: hsl(from var(--bs-blue) h s calc(l - 40));
+
+  --bs-indigo-100: hsl(from var(--bs-indigo) h s calc(l + 40));
+  --bs-indigo-200: hsl(from var(--bs-indigo) h s calc(l + 30));
+  --bs-indigo-300: hsl(from var(--bs-indigo) h s calc(l + 20));
+  --bs-indigo-400: hsl(from var(--bs-indigo) h s calc(l + 10));
+  --bs-indigo-500: var(--bs-indigo);
+  --bs-indigo-600: hsl(from var(--bs-indigo) h s calc(l - 10));
+  --bs-indigo-700: hsl(from var(--bs-indigo) h s calc(l - 20));
+  --bs-indigo-800: hsl(from var(--bs-indigo) h s calc(l - 30));
+  --bs-indigo-900: hsl(from var(--bs-indigo) h s calc(l - 40));
+
+  --bs-purple-100: hsl(from var(--bs-purple) h s calc(l + 40));
+  --bs-purple-200: hsl(from var(--bs-purple) h s calc(l + 30));
+  --bs-purple-300: hsl(from var(--bs-purple) h s calc(l + 20));
+  --bs-purple-400: hsl(from var(--bs-purple) h s calc(l + 10));
+  --bs-purple-500: var(--bs-purple);
+  --bs-purple-600: hsl(from var(--bs-purple) h s calc(l - 10));
+  --bs-purple-700: hsl(from var(--bs-purple) h s calc(l - 20));
+  --bs-purple-800: hsl(from var(--bs-purple) h s calc(l - 30));
+  --bs-purple-900: hsl(from var(--bs-purple) h s calc(l - 40));
+
+  --bs-pink-100: hsl(from var(--bs-pink) h s calc(l + 40));
+  --bs-pink-200: hsl(from var(--bs-pink) h s calc(l + 30));
+  --bs-pink-300: hsl(from var(--bs-pink) h s calc(l + 20));
+  --bs-pink-400: hsl(from var(--bs-pink) h s calc(l + 10));
+  --bs-pink-500: var(--bs-pink);
+  --bs-pink-600: hsl(from var(--bs-pink) h s calc(l - 10));
+  --bs-pink-700: hsl(from var(--bs-pink) h s calc(l - 20));
+  --bs-pink-800: hsl(from var(--bs-pink) h s calc(l - 30));
+  --bs-pink-900: hsl(from var(--bs-pink) h s calc(l - 40));
+
+  --bs-red-100: hsl(from var(--bs-red) h s calc(l + 40));
+  --bs-red-200: hsl(from var(--bs-red) h s calc(l + 30));
+  --bs-red-300: hsl(from var(--bs-red) h s calc(l + 20));
+  --bs-red-400: hsl(from var(--bs-red) h s calc(l + 10));
+  --bs-red-500: var(--bs-red);
+  --bs-red-600: hsl(from var(--bs-red) h s calc(l - 10));
+  --bs-red-700: hsl(from var(--bs-red) h s calc(l - 20));
+  --bs-red-800: hsl(from var(--bs-red) h s calc(l - 30));
+  --bs-red-900: hsl(from var(--bs-red) h s calc(l - 40));
+
+  --bs-orange-100: hsl(from var(--bs-orange) h s calc(l + 40));
+  --bs-orange-200: hsl(from var(--bs-orange) h s calc(l + 30));
+  --bs-orange-300: hsl(from var(--bs-orange) h s calc(l + 20));
+  --bs-orange-400: hsl(from var(--bs-orange) h s calc(l + 10));
+  --bs-orange-500: var(--bs-orange);
+  --bs-orange-600: hsl(from var(--bs-orange) h s calc(l - 10));
+  --bs-orange-700: hsl(from var(--bs-orange) h s calc(l - 20));
+  --bs-orange-800: hsl(from var(--bs-orange) h s calc(l - 30));
+  --bs-orange-900: hsl(from var(--bs-orange) h s calc(l - 40));
+
+  --bs-yellow-100: hsl(from var(--bs-yellow) h s calc(l + 40));
+  --bs-yellow-200: hsl(from var(--bs-yellow) h s calc(l + 30));
+  --bs-yellow-300: hsl(from var(--bs-yellow) h s calc(l + 20));
+  --bs-yellow-400: hsl(from var(--bs-yellow) h s calc(l + 10));
+  --bs-yellow-500: var(--bs-yellow);
+  --bs-yellow-600: hsl(from var(--bs-yellow) h s calc(l - 10));
+  --bs-yellow-700: hsl(from var(--bs-yellow) h s calc(l - 20));
+  --bs-yellow-800: hsl(from var(--bs-yellow) h s calc(l - 30));
+  --bs-yellow-900: hsl(from var(--bs-yellow) h s calc(l - 40));
+
+  --bs-green-100: hsl(from var(--bs-green) h s calc(l + 40));
+  --bs-green-200: hsl(from var(--bs-green) h s calc(l + 30));
+  --bs-green-300: hsl(from var(--bs-green) h s calc(l + 20));
+  --bs-green-400: hsl(from var(--bs-green) h s calc(l + 10));
+  --bs-green-500: var(--bs-green);
+  --bs-green-600: hsl(from var(--bs-green) h s calc(l - 10));
+  --bs-green-700: hsl(from var(--bs-green) h s calc(l - 20));
+  --bs-green-800: hsl(from var(--bs-green) h s calc(l - 30));
+  --bs-green-900: hsl(from var(--bs-green) h s calc(l - 40));
+
+  --bs-teal-100: hsl(from var(--bs-teal) h s calc(l + 40));
+  --bs-teal-200: hsl(from var(--bs-teal) h s calc(l + 30));
+  --bs-teal-300: hsl(from var(--bs-teal) h s calc(l + 20));
+  --bs-teal-400: hsl(from var(--bs-teal) h s calc(l + 10));
+  --bs-teal-500: var(--bs-teal);
+  --bs-teal-600: hsl(from var(--bs-teal) h s calc(l - 10));
+  --bs-teal-700: hsl(from var(--bs-teal) h s calc(l - 20));
+  --bs-teal-800: hsl(from var(--bs-teal) h s calc(l - 30));
+  --bs-teal-900: hsl(from var(--bs-teal) h s calc(l - 40));
+
+  --bs-cyan-100: hsl(from var(--bs-cyan) h s calc(l + 40));
+  --bs-cyan-200: hsl(from var(--bs-cyan) h s calc(l + 30));
+  --bs-cyan-300: hsl(from var(--bs-cyan) h s calc(l + 20));
+  --bs-cyan-400: hsl(from var(--bs-cyan) h s calc(l + 10));
+  --bs-cyan-500: var(--bs-cyan);
+  --bs-cyan-600: hsl(from var(--bs-cyan) h s calc(l - 10));
+  --bs-cyan-700: hsl(from var(--bs-cyan) h s calc(l - 20));
+  --bs-cyan-800: hsl(from var(--bs-cyan) h s calc(l - 30));
+  --bs-cyan-900: hsl(from var(--bs-cyan) h s calc(l - 40));
+
+  --bs-gray-100: hsl(from var(--bs-gray) h s calc(l + 40));
+  --bs-gray-200: hsl(from var(--bs-gray) h s calc(l + 30));
+  --bs-gray-300: hsl(from var(--bs-gray) h s calc(l + 20));
+  --bs-gray-400: hsl(from var(--bs-gray) h s calc(l + 10));
+  --bs-gray-500: var(--bs-gray);
+  --bs-gray-600: hsl(from var(--bs-gray) h s calc(l - 10));
+  --bs-gray-700: hsl(from var(--bs-gray) h s calc(l - 20));
+  --bs-gray-800: hsl(from var(--bs-gray) h s calc(l - 30));
+  --bs-gray-900: hsl(from var(--bs-gray) h s calc(l - 40));
+
+  --bs-primary-100: hsl(from var(--bs-primary) h s calc(l + 40));
+  --bs-primary-200: hsl(from var(--bs-primary) h s calc(l + 30));
+  --bs-primary-300: hsl(from var(--bs-primary) h s calc(l + 20));
+  --bs-primary-400: hsl(from var(--bs-primary) h s calc(l + 10));
+  --bs-primary-500: var(--bs-primary);
+  --bs-primary-600: hsl(from var(--bs-primary) h s calc(l - 10));
+  --bs-primary-700: hsl(from var(--bs-primary) h s calc(l - 20));
+  --bs-primary-800: hsl(from var(--bs-primary) h s calc(l - 30));
+  --bs-primary-900: hsl(from var(--bs-primary) h s calc(l - 40));
+}

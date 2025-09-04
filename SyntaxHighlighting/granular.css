@@ -1,52 +1,58 @@
 :root {
-    --dark: hsl(265, 70%, 5%);
-    --light: hsl(265, 10%, 75%, 1);
-    --hljs-keyword: gold;
-    --hljs-operator: white;
-    --hljs-function: hsl(from var(--dark) calc(h - 80) calc(s + 30) calc(l + 40));
-    --hljs-pattern-match: orange;
-    --hljs-pattern-match-constructor: orange;
-    --hljs-function-params: hsl(from darkorange calc(h - 10) calc(s + 40) l);
-    font-weight: bold;
-    --hljs-function-params-typing: darkorange;
-    --hljs-module-access-module: hsl(260, 45%, 55%, 1);
-    --hljs-constructor: dodgerblue;
-    --hljs-constructor-string: hsl(from dodgerblue h s calc(l + 10));
-    --hljs-comment: hsla(from cyan h s l / .4);
-    --hljs-quote: var(--comment);
-    --hljs-doctag: hsl(10, 1%, 90%, 1);
-    --hljs-formula: hsl(250, 90%, 67%);
-    --hljs-section: coral;
-    --hljs-name: hsl(10, 1%, 90%, 1);
-    --hljs-deletion: hsl(10, 1%, 90%, 1);
-    --hljs-subst: hsl(10, 1%, 90%, 1);
-    --hljs-literal: hsl(10, 1%, 90%, 1);
-    --hljs-string: hsl(10, 1%, 90%, 1);
-    --hljs-regexp: hsl(10, 1%, 90%, 1);
-    --hljs-addition: hsl(10, 1%, 90%, 1);
-    --hljs-attribute: hsl(10, 1%, 90%, 1);
-    --hljs-meta-string: hsl(10, 1%, 90%, 1);
-    --hljs-built_in: hsl(10, 1%, 90%, 1);
-    --hljs-title-class_: hsl(10, 1%, 90%, 1);
-    --hljs-class-title: hsl(10, 1%, 90%, 1);
-    --hljs-attr: hsl(10, 1%, 90%, 1);
-    --hljs-variable: hsl(10, 1%, 90%, 1);
-    --hljs-template-variable: hsl(10, 1%, 90%, 1);
-    --hljs-type: hsl(10, 1%, 90%, 1);
-    --hljs-selector-class: hsl(from mediumvioletred calc(h + 0) calc(s + 20) calc(l + 10));
-    --hljs-selector-id: hsl(from orangered calc(h + 0) calc(s + 20) calc(l + 10));
-    --hljs-selector-attr: hsl(from olivedrab calc(h + 0) calc(s + 20) calc(l + 10));
-    --hljs-selector-tag: hsl(from steelblue calc(h + 0) calc(s + 30) calc(l + 10));
-    --hljs-selector-pseudo: hsl(10, 1%, 90%, 1);
-    --hljs-number: hsl(10, 1%, 90%, 1);
-    --hljs-symbol: hsl(10, 1%, 90%, 1);
-    --hljs-bullet: hsl(10, 1%, 90%, 1);
-    --hljs-link: hsl(10, 1%, 90%, 1);
-    --hljs-meta: hsl(10, 1%, 90%, 1);
-    --hljs-title: hsl(10, 1%, 90%, 1);
+  --dark: hsl(265, 70%, 5%);
+  --light: hsl(265, 10%, 75%, 1);
+  --hljs-addition: hsl(10, 1%, 90%, 1);
+  --hljs-attr: #ab443dff;
+  --hljs-attribute: hsl(10, 1%, 90%, 1);
+  --hljs-built_in: #5e96ceff;
+  --hljs-bullet: hsl(10, 1%, 90%, 1);
+  --hljs-class-title: hsl(10, 1%, 90%, 1);
+  --hljs-comment: #88888899;
+  --hljs-constructor: dodgerblue;
+  --hljs-constructor-string: hsl(from dodgerblue h s calc(l + 10));
+  --hljs-deletion: hsl(10, 1%, 90%, 1);
+  --hljs-doctag: hsl(10, 1%, 90%, 1);
+  --hljs-formula: hsl(250, 90%, 67%);
+  --hljs-function: #bea03fff;
+  --hljs-params: #cc71b4;
+  --hljs-params-typing: darkorange;
+  --hljs-keyword: #24b5a8;
+  --hljs-linenumbers: #888888;
+  --hljs-linenumber-divider: #88888888;
+  --hljs-link: hsl(10, 1%, 90%, 1);
+  --hljs-literal: #c13838ff;
+  --hljs-meta: hsl(10, 1%, 90%, 1);
+  --hljs-meta-string: hsl(10, 1%, 90%, 1);
+  --hljs-module-access-module: hsl(260, 45%, 55%, 1);
+  --hljs-name: hsl(10, 1%, 90%, 1);
+  --hljs-number: #be6032ff;
+  --hljs-operator: gold;
+  --hljs-pattern-match: orange;
+  --hljs-pattern-match-constructor: orange;
+  --hljs-property: #be723fff;
+  --hljs-quote: var(--comment);
+  --hljs-regexp: #b81f71ff;
+  --hljs-section: coral;
+  --hljs-selector-attr: hsl(from olivedrab calc(h + 0) calc(s + 20) calc(l + 10));
+  --hljs-selector-class: hsl(from mediumvioletred calc(h + 0) calc(s + 20) calc(l + 10));
+  --hljs-selector-id: hsl(from orangered calc(h + 0) calc(s + 20) calc(l + 10));
+  --hljs-selector-pseudo: hsl(10, 1%, 90%, 1);
+  --hljs-selector-tag: hsl(from steelblue calc(h + 0) calc(s + 30) calc(l + 10));
+  --hljs-string: #37ae6fff;
+  --hljs-subst: #c99327ff;
+  --hljs-symbol: hsl(10, 1%, 90%, 1);
+  --hljs-template-variable: hsl(10, 1%, 90%, 1);
+  --hljs-title: hsl(10, 1%, 90%, 1);
+  --hljs-title_class_: #935cd1ff;
+  --hljs-title_function: #3397d3ff;
+  --hljs-type: hsl(10, 1%, 90%, 1);
+  --hljs-variable: hsl(10, 1%, 90%, 1);
+  --hljs-variable_constant: #ac3863ff;
+  --hljs-variable_language: #24b58cff;
+  
 }
 
-body {
+
     pre code.hljs {
         display: block;
         overflow-x: auto;
@@ -89,17 +95,19 @@ body {
     .hljs-pattern-match .hljs-constructor {
         color: var(--hljs-pattern-match-constructor) !important;
     }
-
-    .hljs-function {
-        color: var(--hljs-function) !important;
+.hljs-function{
+  color: var(--hljs-function)
+}
+ .hljs-title.function_ {
+        color: var(--hljs-title_function) !important;
+    }
+    .hljs-function .hljs-params,
+    .hljs-params {
+        color: var(--hljs-params) !important;
     }
 
-    .hljs-function .hljs-params {
-        color: var(--hljs-function-params) !important;
-    }
-
-    .hljs-function .hljs-params .hljs-typing {
-        color: var(--hljs-function-params-typing) !important;
+    .hljs-params.hljs-typing {
+        color: var(--hljs-params-typing) !important;
     }
 
     .hljs-module-access .hljs-module {
@@ -180,7 +188,7 @@ body {
     }
 
     .hljs-title.class_ {
-        color: var(--hljs-title-class_) !important;
+        color: var(--hljs-title_class_) !important;
     }
 
     .hljs-class .hljs-title {
@@ -194,7 +202,12 @@ body {
     .hljs-variable {
         color: var(--hljs-variable) !important;
     }
-
+.hljs-variable.language_{
+  color: var(--hljs-variable_language) !important;
+}
+.hljs-variable.constant_{
+  color: var(--hljs-variable_constant) !important;
+}
     .hljs-template-variable {
         color: var(--hljs-template-variable) !important;
     }
@@ -242,4 +255,28 @@ body {
     .hljs-title {
         color: var(--hljs-title) !important;
     }
+.hljs-property{
+  color: var(--hljs-property) !important;
+}
+
+/* for block of numbers */
+td.hljs-ln-numbers {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    color: var(--hljs-linenumbers);
+    border-right: 1px solid var(--hljs-linenumber-divider);
+    vertical-align: top;
+    padding-right: .3rem;
+
+    /* your custom style here */
+}
+
+/* for block of code */
+td.hljs-ln-code {
+    padding-left: .3rem;
 }
