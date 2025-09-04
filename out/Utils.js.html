@@ -1,8 +1,36 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Utils.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Utils.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Mimics a C# type switch expression using JavaScript
  * @function switchExpression
  * @param {string} value - The value to match against case keys.
- * @param {Object<string, Function>} cases - An object where keys are match strings (e.g., "1 or 2 or 3") and values are functions to execute.
+ * @param {Object&lt;string, Function>} cases - An object where keys are match strings (e.g., "1 or 2 or 3") and values are functions to execute.
  * @returns {*} The result of the matched case function or null if no match found and no default (_) is provided.
  * @example
  * const result = switchExpression("1", {
@@ -320,7 +348,7 @@ function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, l
   let duration = (to - from) / 1000;
   let divs = abbreviate ? ABBREVIATED_DIVISIONS : DIVISIONS;
   for (const division of divs) {
-    if (Math.abs(duration) < division.amount) {
+    if (Math.abs(duration) &lt; division.amount) {
       return RELATIVE_DATE_FORMATTER.format(Math.round(duration), division.name);
     }
     duration /= division.amount;
@@ -355,7 +383,7 @@ function toTitleCase(string) {
   return string.split(" ").map((str, index) => {
     const smallWords = ["a", "an", "the", "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "at", "by", "in", "of", "off", "on", "per", "to", "up", "via"];
     return (
-      index > 0 && (smallWords.includes(str.toLowerCase()) || str.length < 3)
+      index > 0 &amp;&amp; (smallWords.includes(str.toLowerCase()) || str.length &lt; 3)
         ? str.toLowerCase()
         : (str.includes("-")
           ? str.split("-").map(toProperCase).join("-")
@@ -456,8 +484,8 @@ function sanitizeInput(inputValue) {
  * @returns {string} Escaped string.
  */
 function escapeHTML(str) {
-  return str.replace(/[&<>"']/g, m =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]
+  return str.replace(/[&amp;&lt;>"']/g, m =>
+    ({ '&amp;': '&amp;amp;', '&lt;': '&amp;lt;', '>': '&amp;gt;', '"': '&amp;quot;', "'": '&amp;#039;' })[m]
   );
 }
 
@@ -470,7 +498,7 @@ function escapeHTML(str) {
 function isValidExpression(expr) {
   const callRegex = /^\s*(?:[a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*(?:\(([^()]|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|[^()])*?\))?|\(\s*\)\s*=>\s*[\s\S]+|\(\s*[a-zA-Z_$][\w$]*(?:\s*,\s*[a-zA-Z_$][\w$]*)*\s*\)\s*=>\s*[\s\S]+)\s*$/;
   if (callRegex.test(expr)) return true;
-  if (expr.includes('(') && expr.includes(')')) {
+  if (expr.includes('(') &amp;&amp; expr.includes(')')) {
     console.error("Parsing error: Complex function call may not be fully supported: ", expr);
   }
   return false;
@@ -482,18 +510,19 @@ function isValidExpression(expr) {
  * @param {*} valueOrFn - The value or function to resolve.
  * @param {*} [fb=""] - Fallback value if access fails or is invalid.
  * @returns {*} Resolved or fallback value.
+ * &lt;code>Testing&lt;/code>
  */
 function safeGet(valueOrFn, fb = "") {
   const fallback = fb || "";
   try {
     if (typeof valueOrFn === "function") {
       const result = valueOrFn();
-      if (typeof result === "string" && !isValidExpression(result)) {
+      if (typeof result === "string" &amp;&amp; !isValidExpression(result)) {
         return fallback;
       }
       return result != null ? result : fallback;
     } else {
-      if (typeof valueOrFn === "string" && !isValidExpression(valueOrFn)) {
+      if (typeof valueOrFn === "string" &amp;&amp; !isValidExpression(valueOrFn)) {
         return fallback;
       }
       return valueOrFn != null ? valueOrFn : fallback;
@@ -514,7 +543,7 @@ function safeGet(valueOrFn, fb = "") {
  */
 function first(array, n = 1) {
   if (n === 1) return array[0];
-  return array.filter((_, index) => index < n);
+  return array.filter((_, index) => index &lt; n);
 }
 
 /**
@@ -526,7 +555,7 @@ function first(array, n = 1) {
  */
 function last(array, n = 1) {
   if (n === 1) return array[array.length - 1];
-  return array.filter((_, index) => array.length - index <= n);
+  return array.filter((_, index) => array.length - index &lt;= n);
 }
 
 /**
@@ -591,7 +620,7 @@ function randomNumberBetween(min, max) {
  * Delays code execution by the given duration (in milliseconds).
  * @function sleep
  * @param {number} duration - Time to wait in ms.
- * @returns {Promise<void>} Promise that resolves after delay.
+ * @returns {Promise&lt;void>} Promise that resolves after delay.
  */
 function sleep(duration) {
   return new Promise(resolve => {
@@ -639,7 +668,30 @@ function getLogicalValue(callback) {
 function isIOS() {
   return (
     (/iPad|iPhone|iPod/.test(navigator.platform) ||
-      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) &&
+      (navigator.platform === "MacIntel" &amp;&amp; navigator.maxTouchPoints > 1)) &amp;&amp;
     !window.MSStream
   );
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ValidateArgumentType">Validate Argument Type</a></li><li><a href="global.html#appendChildren">appendChildren</a></li><li><a href="global.html#clearParent">clearParent</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#escapeHTML">escapeHTML</a></li><li><a href="global.html#findAncestor">findAncestor</a></li><li><a href="global.html#first">first</a></li><li><a href="global.html#formatCompactNumber">formatCompactNumber</a></li><li><a href="global.html#formatCurrency">formatCurrency</a></li><li><a href="global.html#formatList">formatList</a></li><li><a href="global.html#formatNumber">formatNumber</a></li><li><a href="global.html#formatRelativeDate">formatRelativeDate</a></li><li><a href="global.html#getLogicalValue">getLogicalValue</a></li><li><a href="global.html#getPercentage">getPercentage</a></li><li><a href="global.html#getSum">getSum</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#insertRawElement">insertRawElement</a></li><li><a href="global.html#isIOS">isIOS</a></li><li><a href="global.html#isValidExpression">isValidExpression</a></li><li><a href="global.html#last">last</a></li><li><a href="global.html#listen">listen</a></li><li><a href="global.html#log">log</a></li><li><a href="global.html#memoize">memoize</a></li><li><a href="global.html#pluck">pluck</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#qsa">qsa</a></li><li><a href="global.html#randomNumberBetween">randomNumberBetween</a></li><li><a href="global.html#removeDuplicates">removeDuplicates</a></li><li><a href="global.html#safeGet">safeGet</a></li><li><a href="global.html#sample">sample</a></li><li><a href="global.html#sanitizeInput">sanitizeInput</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#switchExpression">switchExpression</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#toProperCase">toProperCase</a></li><li><a href="global.html#toTitleCase">toTitleCase</a></li><li><a href="global.html#validateArgumentValue">validateArgumentValue</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Sep 04 2025 12:15:27 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
