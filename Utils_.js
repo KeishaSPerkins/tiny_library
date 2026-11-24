@@ -3,15 +3,15 @@
  * @function switchExpression
  * @functionName Switch Expression
  * @param {string} value - The value to match against case keys.
- * @param {Object<string, Function>} cases - An object where keys are match strings (e.g., "1 or 2 or 3") and values are functions to execute.
- * @returns {*} The result of the matched case function or null if no match found and no default (_) is provided.
+ * @param {Object<string, export function>} cases - An object where keys are match strings (e.g., "1 or 2 or 3") and values are functions to execute.
+ * @returns {*} The result of the matched case export function or null if no match found and no default (_) is provided.
  * @example
  * const result = switchExpression("1", {
  *   "1 or 2": () => "Matched",
  *   "_": () => "Default"
  * });
  */
-function switchExpression(value, cases) {
+export function switchExpression(value, cases) {
   for (const [key, result] of Object.entries(cases)) {
     if (key === '_') {
       return result();
@@ -35,7 +35,7 @@ function switchExpression(value, cases) {
  * @param {HTMLElement} [parent=document] - Optional parent to scope the query.
  * @returns {HTMLElement|null} The first matching element or null.
  */
-function qs(selector, parent) {
+export function qs(selector, parent) {
   return (parent || document).querySelector(selector);
 }
 
@@ -47,7 +47,7 @@ function qs(selector, parent) {
  * @param {HTMLElement} [parent=document] - Optional parent to scope the query.
  * @returns {HTMLElement[]} Array of matching elements.
  */
-function qsa(selector, parent) {
+export function qsa(selector, parent) {
   return [...(parent || document).querySelectorAll(selector)];
 }
 
@@ -59,7 +59,7 @@ function qsa(selector, parent) {
  * @param {string} ancestorQuery - Selector for the ancestor to find.
  * @returns {HTMLElement|null} The closest ancestor matching the query.
  */
-function findAncestor(descendantQuery, ancestorQuery) {
+export function findAncestor(descendantQuery, ancestorQuery) {
   return qs(descendantQuery).closest(ancestorQuery);
 }
 
@@ -73,7 +73,7 @@ function findAncestor(descendantQuery, ancestorQuery) {
  * @param {HTMLElement|string|null} [parent=null] - Parent element or selector to append to.
  * @returns {HTMLElement|undefined} The created element or undefined if appended.
  */
-function createElement(type, options = {}, parent = null) {
+export function createElement(type, options = {}, parent = null) {
   const element = document.createElement(type);
   Object.entries(options).forEach(([key, value]) => {
     switch (key) {
@@ -115,7 +115,7 @@ function createElement(type, options = {}, parent = null) {
  * @param {HTMLElement} parent - The parent element.
  * @param {HTMLElement[]} [children=[]] - Array of elements to append.
  */
-function appendChildren(parent, children = []) {
+export function appendChildren(parent, children = []) {
   children.forEach(child => {
     (parent || document).appendChild(child);
   });
@@ -129,7 +129,7 @@ function appendChildren(parent, children = []) {
  * @param {Element} relativeElementString - Element to insert relative to.
  * @param {string} [positionString="lastChild"] - Position like "beforebegin", "afterend", etc.
  */
-function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
+export function insertRawElement(elementString, relativeElementString, positionString = "lastChild") {
   const validPositions = [
     "after", "afterend",
     "before", "beforebegin",
@@ -154,10 +154,10 @@ function insertRawElement(elementString, relativeElementString, positionString =
  * @functionName Listen
  * @param {string} [type="click"] - Event type.
  * @param {string} selector - CSS selector for elements to listen on.
- * @param {Function} callback - Callback function when event occurs.
+ * @param {export function} callback - Callback export function when event occurs.
  * @param {Object} [options={}] - Optional event listener options.
  */
-function listen(type = "click", selector, callback, options = {}) {
+export function listen(type = "click", selector, callback, options = {}) {
   window.addEventListener(
     type,
     e => {
@@ -173,7 +173,7 @@ function listen(type = "click", selector, callback, options = {}) {
  * @functionName Clear Parent
  * @param {string|HTMLElement} target - CSS selector or element reference.
  */
-function clearParent(target) {
+export function clearParent(target) {
   const parents = typeof target === "string" ? qsa(target) : [target];
   parents.forEach((p) => {
     while (p.firstChild != null) {
@@ -190,7 +190,7 @@ function clearParent(target) {
  * @async
  * @param {*} [message="log"] - The message or value to log.
  */
-function log(message = "log") {
+export function log(message = "log") {
   console.log(message);
 }
 
@@ -205,7 +205,7 @@ function log(message = "log") {
  * @returns {boolean} True if valid, otherwise throws an error.
  * @throws {Error} If the value is not valid.
  */
-function validateArgumentValue(validArray, itemToCheck, argumentName = "") {
+export function validateArgumentValue(validArray, itemToCheck, argumentName = "") {
   if (!validArray.includes(itemToCheck))
     throw new Error(`The supplied ${argumentName} argument is invalid.`);
   return true;
@@ -221,7 +221,7 @@ function validateArgumentValue(validArray, itemToCheck, argumentName = "") {
  * @returns {boolean} True if the type is valid, otherwise throws an error.
  * @throws {Error} If the value's type does not match.
  */
-function validateArgumentType(validType, itemToCheck, argumentName) {
+export function validateArgumentType(validType, itemToCheck, argumentName) {
   if (typeof itemToCheck !== validType)
     throw new Error(`The supplied ${argumentName} argument must be a ${validType}.`);
   return true;
@@ -235,7 +235,7 @@ function validateArgumentType(validType, itemToCheck, argumentName) {
  * @param {...number} args - A list of numbers to sum.
  * @returns {number} The total sum.
  */
-function getSum(...args) {
+export function getSum(...args) {
   return args.reduce((a, b) => a + b, 0);
 }
 
@@ -247,7 +247,7 @@ function getSum(...args) {
  * @param {...number} whole - One or more values that make up the denominator.
  * @returns {number} Percentage value (0–100).
  */
-function getPercentage(part, ...whole) {
+export function getPercentage(part, ...whole) {
   return (part / whole.reduce((a, b) => a + b, 0)) * 100;
 }
 
@@ -261,7 +261,7 @@ function getPercentage(part, ...whole) {
  * @param {string} [location] - Optional BCP 47 locale string (e.g. 'en-US').
  * @returns {string} The formatted currency string.
  */
-function formatCurrency(number, location) {
+export function formatCurrency(number, location) {
   const CURRENCY_FORMATTER = new Intl.NumberFormat(location || undefined, {
     currency: "USD",
     style: "currency",
@@ -277,7 +277,7 @@ function formatCurrency(number, location) {
  * @param {string} [location] - Optional locale string.
  * @returns {string} The formatted number.
  */
-function formatNumber(number, location) {
+export function formatNumber(number, location) {
   const NUMBER_FORMATTER = new Intl.NumberFormat(location || undefined);
   return NUMBER_FORMATTER.format(number);
 }
@@ -290,7 +290,7 @@ function formatNumber(number, location) {
  * @param {string} [location] - Optional locale.
  * @returns {string} Compact-formatted number.
  */
-function formatCompactNumber(number, location) {
+export function formatCompactNumber(number, location) {
   const COMPACT_NUMBER_FORMATTER = new Intl.NumberFormat(location || undefined, {
     notation: "compact",
   });
@@ -307,7 +307,7 @@ function formatCompactNumber(number, location) {
  * @param {string} [location] - Optional locale.
  * @returns {string} Human-readable relative time.
  */
-function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, location) {
+export function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, location) {
   const DIVISIONS = [
     { amount: 60, name: "seconds" },
     { amount: 60, name: "minutes" },
@@ -356,7 +356,7 @@ function formatRelativeDate(toDate, fromDate = new Date(), abbreviate = false, l
  * @param {string} string - Input text.
  * @returns {string} Proper cased string.
  */
-function toProperCase(string) {
+export function toProperCase(string) {
   if (!string) return "";
   return string.split(" ")
     .map((s) => s[0].toUpperCase() + s.slice(1).toLowerCase())
@@ -370,7 +370,7 @@ function toProperCase(string) {
  * @param {string} string - Input text.
  * @returns {string} Title-cased string.
  */
-function toTitleCase(string) {
+export function toTitleCase(string) {
   if (!string) return "";
   return string.split(" ").map((str, index) => {
     const smallWords = ["a", "an", "the", "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "at", "by", "in", "of", "off", "on", "per", "to", "up", "via"];
@@ -394,7 +394,7 @@ function toTitleCase(string) {
  * @param {string} [location] - Optional locale string.
  * @returns {string} A formatted list.
  */
-function formatList(array, commas, andOr, location) {
+export function formatList(array, commas, andOr, location) {
   const typeLookup = {
     "and": "conjunction",
     "conjunction": "conjunction",
@@ -411,14 +411,14 @@ function formatList(array, commas, andOr, location) {
 
 ///Performance
 /**
- * Debounces a function: delays execution until after `delay` ms of inactivity.
+ * Debounces a export function: delays execution until after `delay` ms of inactivity.
  * @function debounce
  * @functionName Debounce
- * @param {Function} cb - Callback function to debounce.
+ * @param {export function} cb - Callback export function to debounce.
  * @param {number} [delay=1000] - Delay in milliseconds.
- * @returns {Function} Debounced function.
+ * @returns {export function} Debounced export function.
  */
-function debounce(cb, delay) {
+export function debounce(cb, delay) {
   let timeout;
   return (...args) => {
     clearTimeout(timeout);
@@ -427,14 +427,14 @@ function debounce(cb, delay) {
 }
 
 /**
- * Throttles a function: ensures it's only called once every `delay` ms.
+ * Throttles a export function: ensures it's only called once every `delay` ms.
  * @function throttle
  * @functionName Throttle
- * @param {Function} cb - Callback function to throttle.
+ * @param {export function} cb - Callback export function to throttle.
  * @param {number} [delay=1000] - Delay in milliseconds.
- * @returns {Function} Throttled function.
+ * @returns {export function} Throttled export function.
  */
-function throttle(cb, delay) {
+export function throttle(cb, delay) {
   let shouldWait = false;
   let waitingArgs;
 
@@ -469,7 +469,7 @@ function throttle(cb, delay) {
  * @param {string} inputValue - Unsafe text input.
  * @returns {string} Sanitized string.
  */
-function sanitizeInput(inputValue) {
+export function sanitizeInput(inputValue) {
   return createElement("div", { text: inputValue }).innerHTML;
 }
 
@@ -480,7 +480,7 @@ function sanitizeInput(inputValue) {
  * @param {string} str - Unsafe string.
  * @returns {string} Escaped string.
  */
-function escapeHTML(str) {
+export function escapeHTML(str) {
   return str.replace(/[&<>"']/g, m =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]
   );
@@ -493,27 +493,27 @@ function escapeHTML(str) {
  * @param {string} expr - The expression string.
  * @returns {boolean} Whether it's valid.
  */
-function isValidExpression(expr) {
+export function isValidExpression(expr) {
   const callRegex = /^\s*(?:[a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*(?:\(([^()]|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`|[^()])*?\))?|\(\s*\)\s*=>\s*[\s\S]+|\(\s*[a-zA-Z_$][\w$]*(?:\s*,\s*[a-zA-Z_$][\w$]*)*\s*\)\s*=>\s*[\s\S]+)\s*$/;
   if (callRegex.test(expr)) return true;
   if (expr.includes('(') && expr.includes(')')) {
-    console.error("Parsing error: Complex function call may not be fully supported: ", expr);
+    console.error("Parsing error: Complex export function call may not be fully supported: ", expr);
   }
   return false;
 }
 
 /**
- * Safely attempts to access or call a value or function, with a fallback.
+ * Safely attempts to access or call a value or export function, with a fallback.
  * @function safeGet
  * @functionName Safe Get
- * @param {*} valueOrFn - The value or function to resolve.
+ * @param {*} valueOrFn - The value or export function to resolve.
  * @param {*} [fb=""] - Fallback value if access fails or is invalid.
  * @returns {*} Resolved or fallback value.
  */
-function safeGet(valueOrFn, fb = "") {
+export function safeGet(valueOrFn, fb = "") {
   const fallback = fb || "";
   try {
-    if (typeof valueOrFn === "function") {
+    if (typeof valueOrFn === "export function") {
       const result = valueOrFn();
       if (typeof result === "string" && !isValidExpression(result)) {
         return fallback;
@@ -540,7 +540,7 @@ function safeGet(valueOrFn, fb = "") {
  * @param {number} [n=1] - How many elements to return.
  * @returns {*} The first element or array of elements.
  */
-function first(array, n = 1) {
+export function first(array, n = 1) {
   if (n === 1) return array[0];
   return array.filter((_, index) => index < n);
 }
@@ -553,7 +553,7 @@ function first(array, n = 1) {
  * @param {number} [n=1] - How many elements to return.
  * @returns {*} The last element or array of elements.
  */
-function last(array, n = 1) {
+export function last(array, n = 1) {
   if (n === 1) return array[array.length - 1];
   return array.filter((_, index) => array.length - index <= n);
 }
@@ -565,7 +565,7 @@ function last(array, n = 1) {
  * @param {Array} array - The array to sample from.
  * @returns {*} A random element.
  */
-function sample(array) {
+export function sample(array) {
   return array[randomNumberBetween(0, array.length - 1)];
 }
 
@@ -577,7 +577,7 @@ function sample(array) {
  * @param {string} key - Key to pluck.
  * @returns {Array} Array of values.
  */
-function pluck(array, key) {
+export function pluck(array, key) {
   return array.map(element => element[key]);
 }
 
@@ -589,7 +589,7 @@ function pluck(array, key) {
  * @param {string} key - Key to group by.
  * @returns {Object} Object of grouped arrays.
  */
-function groupBy(array, key) {
+export function groupBy(array, key) {
   return array.reduce((group, element) => {
     const keyValue = element[key];
     return { ...group, [keyValue]: [...(group[keyValue] ?? []), element] };
@@ -603,7 +603,7 @@ function groupBy(array, key) {
  * @param {Array} array - The array to deduplicate.
  * @returns {Array} New array without duplicates.
  */
-function removeDuplicates(array) {
+export function removeDuplicates(array) {
   return Array.from(new Set(array));
 }
 
@@ -614,7 +614,7 @@ function removeDuplicates(array) {
   * @functionName Get Guid
   * @returns {String} A string containing a new UUID
 */
-function getGuid() {
+export function getGuid() {
   return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) =>
     (
       +c ^
@@ -631,7 +631,7 @@ window.newGuid = getGuid;
  * @param {number} [max=100] - Maximum number.
  * @returns {number} Random integer.
  */
-function randomNumberBetween(min, max) {
+export function randomNumberBetween(min, max) {
   return Math.floor(Math.random() * ((max || 100) - (min || 0) + 1) + (min || 0));
 }
 
@@ -642,20 +642,20 @@ function randomNumberBetween(min, max) {
  * @param {number} duration - Time to wait in ms.
  * @returns {Promise<void>} Promise that resolves after delay.
  */
-function sleep(duration) {
+export function sleep(duration) {
   return new Promise(resolve => {
     setTimeout(resolve, duration);
   });
 }
 
 /**
- * Memoizes the result of a function for repeated inputs.
+ * Memoizes the result of a export function for repeated inputs.
  * @function memoize
  * @functionName Memoize
- * @param {Function} cb - Function to memoize.
- * @returns {Function} Memoized function.
+ * @param {export function} cb - export function to memoize.
+ * @returns {export function} Memoized export function.
  */
-function memoize(cb) {
+export function memoize(cb) {
   const cache = new Map();
   return (...args) => {
     const key = JSON.stringify(args);
@@ -670,10 +670,10 @@ function memoize(cb) {
  * Resolves a logical callback immediately.
  * @function getLogicalValue
  * @functionName Get Logical Value
- * @param {Function} callback - Function to execute.
- * @returns {*} Return value of the function.
+ * @param {export function} callback - export function to execute.
+ * @returns {*} Return value of the export function.
  */
-function getLogicalValue(callback) {
+export function getLogicalValue(callback) {
   return ((...args) => {
     return callback();
   })();
@@ -688,7 +688,7 @@ function getLogicalValue(callback) {
  * @functionName Is Ios
  * @returns {boolean} Whether the device is an iOS device.
  */
-function isIOS() {
+export function isIOS() {
   return (
     (/iPad|iPhone|iPod/.test(navigator.platform) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) &&
@@ -702,7 +702,7 @@ function isIOS() {
  * @param {any} item - Item being tested
  * @returns {boolean}
  */
-function isObject(item) {
+export function isObject(item) {
   return item && typeof item === "object" && !Array.isArray(item);
 }
 /**
@@ -713,7 +713,7 @@ function isObject(item) {
  * @returns {Object}
  */
 
-function deepMerge(target, ...sources) {
+export function deepMerge(target, ...sources) {
   if (!sources.length) return target;
   const source = sources.shift();
 
